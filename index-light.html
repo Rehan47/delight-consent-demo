@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DELIGHT Digital Consent Management System - Light Version</title>
+    <link rel="stylesheet" href="style-light.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Progress Tracker -->
+        <div class="progress-tracker" id="progressTracker">
+            <div class="progress-header">
+                <h2 class="progress-title">DELIGHT Study Progress</h2>
+                <button class="md3-theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="md3-toggle-track">
+                        <span class="md3-toggle-thumb">
+                            <svg class="md3-icon md3-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"/>
+                                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                            </svg>
+                            <svg class="md3-icon md3-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            </svg>
+                        </span>
+                    </span>
+                </button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="step active" data-step="0">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Welcome</div>
+                </div>
+                <div class="step" data-step="1">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Information</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Consent Questions</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">4</div>
+                    <div class="step-label">Signatures</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">5</div>
+                    <div class="step-label">Complete</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Welcome Screen -->
+            <div class="screen active" id="welcomeScreen">
+                <div class="container">
+                    <div class="welcome-content">
+                        <div class="study-logo">
+                            <div class="logo-circle">
+                                <span class="logo-text">DELIGHT</span>
+                            </div>
+                        </div>
+                        <h1 class="study-title">DELIGHT Pilot Study</h1>
+                        <p class="study-subtitle">Digital Consent Management System - Light Version</p>
+                        <div class="study-description-card">
+                            <p class="study-description">
+                                This study aims to find out whether babies with CCHD should have their umbilical cord clamped immediately, or 60 seconds or more after they have been born.
+                            </p>
+                        </div>
+                        
+                        <div class="language-selection">
+                            <label class="form-label" for="languageSelect">Select your preferred language:</label>
+                            <select id="languageSelect" class="form-control">
+                                <option value="en">English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                                <option value="it">Italian</option>
+                                <option value="zh-cn">Chinese (Simplified)</option>
+                                <option value="zh-tw">Chinese (Traditional)</option>
+                                <option value="ja">Japanese</option>
+                                <option value="ko">Korean</option>
+                                <option value="ar">Arabic</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn btn--primary btn--lg" id="startConsentBtn">
+                            Start Consent Process
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Information Screen -->
+            <div class="screen" id="informationScreen">
+                <div class="container">
+                    <h2>Study Information</h2>
+                    <p class="screen-description">Please review the following information about the study before proceeding.</p>
+                    
+                    <div class="info-sections">
+                        <div class="info-section">
+                            <button class="section-header" data-section="purpose">
+                                <h3>Study Purpose</h3>
+                                <span class="chevron">▼</span>
+                            </button>
+                            <div class="section-content" id="purposeContent">
+                                <p>This study aims to find out whether babies with CCHD should have their umbilical cord clamped immediately, or 60 seconds or more after they have been born.</p>
+                                <p><strong>Population:</strong> 90 babies in Australia initially</p>
+                                <p><strong>Duration:</strong> Up to 2 years after due date</p>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <button class="section-header" data-section="risks">
+                                <h3>Risks & Benefits</h3>
+                                <span class="chevron">▼</span>
+                            </button>
+                            <div class="section-content" id="risksContent">
+                                <h4>Potential Risks:</h4>
+                                <ul>
+                                    <li>Low body temperature (only in babies born 8+ weeks early)</li>
+                                    <li>Polycythemia (too many red blood cells)</li>
+                                    <li>Fluid overload</li>
+                                </ul>
+                                <h4>Potential Benefits:</h4>
+                                <ul>
+                                    <li>Help researchers learn more about caring for babies with CCHD</li>
+                                    <li>May help future babies with CCHD</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <button class="section-header" data-section="rights">
+                                <h3>Your Rights</h3>
+                                <span class="chevron">▼</span>
+                            </button>
+                            <div class="section-content" id="rightsContent">
+                                <ul>
+                                    <li>Participation is voluntary</li>
+                                    <li>You can withdraw at any time</li>
+                                    <li>Your choice won't affect your relationship with your doctor</li>
+                                    <li>You can ask questions at any time</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <button class="section-header" data-section="contact">
+                                <h3>Contact Information</h3>
+                                <span class="chevron">▼</span>
+                            </button>
+                            <div class="section-content" id="contactContent">
+                                <p><strong>Study Team:</strong> DELIGHT Study Team</p>
+                                <p><strong>Phone:</strong> 1800-DELIGHT</p>
+                                <p><strong>Email:</strong> delight@research.edu.au</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button class="btn btn--secondary" id="infoBackBtn">Previous</button>
+                        <button class="btn btn--primary" id="infoNextBtn">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consent Questions Screen -->
+            <div class="screen" id="consentScreen">
+                <div class="container">
+                    <h2>Consent Questions</h2>
+                    <p class="screen-description">Please answer the following questions about your participation in the study.</p>
+                    
+                    <form id="consentForm" class="consent-form">
+                        <div class="form-group main-consent">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="mainConsent" name="mainConsent" required>
+                                <label for="mainConsent" class="checkbox-label">
+                                    <span class="checkbox-custom"></span>
+                                    I freely agree for my baby to take part in this study
+                                </label>
+                            </div>
+                            <div class="error-message" id="mainConsentError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Blood sample collection (optional)</label>
+                            <div class="radio-group">
+                                <input type="radio" id="bloodYes" name="bloodSample" value="yes">
+                                <label for="bloodYes">Yes</label>
+                                <input type="radio" id="bloodNo" name="bloodSample" value="no">
+                                <label for="bloodNo">No</label>
+                                <input type="radio" id="bloodNA" name="bloodSample" value="na">
+                                <label for="bloodNA">Not applicable</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sensor to measure brain oxygen (optional)</label>
+                            <div class="radio-group">
+                                <input type="radio" id="brainYes" name="brainOxygen" value="yes">
+                                <label for="brainYes">Yes</label>
+                                <input type="radio" id="brainNo" name="brainOxygen" value="no">
+                                <label for="brainNo">No</label>
+                                <input type="radio" id="brainNA" name="brainOxygen" value="na">
+                                <label for="brainNA">Not applicable</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Data sharing for future research (optional)</label>
+                            <div class="radio-group">
+                                <input type="radio" id="dataYes" name="dataSharing" value="yes">
+                                <label for="dataYes">Yes</label>
+                                <input type="radio" id="dataNo" name="dataSharing" value="no">
+                                <label for="dataNo">No</label>
+                                <input type="radio" id="dataNA" name="dataSharing" value="na">
+                                <label for="dataNA">Not applicable</label>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="navigation-buttons">
+                        <button class="btn btn--secondary" id="consentBackBtn">Previous</button>
+                        <button class="btn btn--primary" id="consentNextBtn">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Signature Screen -->
+            <div class="screen" id="signatureScreen">
+                <div class="container">
+                    <h2>Digital Signatures</h2>
+                    <p class="screen-description">Please provide your name and digital signature to complete the consent process.</p>
+                    
+                    <div class="signature-section">
+                        <div class="form-group">
+                            <label class="form-label" for="participantName">Participant Name</label>
+                            <input type="text" id="participantName" class="form-control" placeholder="Enter your full name">
+                            <div class="error-message" id="nameError"></div>
+                        </div>
+
+                        <div class="signature-group">
+                            <label class="form-label">Digital Signature</label>
+                            <div class="signature-canvas-container">
+                                <canvas id="signatureCanvas" class="signature-canvas"></canvas>
+                                <div class="signature-placeholder" id="signaturePlaceholder">
+                                    Please sign here
+                                </div>
+                            </div>
+                            <button class="btn btn--secondary btn--sm" id="clearSignatureBtn">Clear Signature</button>
+                            <div class="error-message" id="signatureError"></div>
+                        </div>
+
+                        <div class="timestamp-display">
+                            <p><strong>Date/Time:</strong> <span id="timestamp"></span></p>
+                        </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                        <button class="btn btn--secondary" id="signatureBackBtn">Previous</button>
+                        <button class="btn btn--primary" id="signatureNextBtn">Complete Consent</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completion Screen -->
+            <div class="screen" id="completionScreen">
+                <div class="container">
+                    <div class="completion-content">
+                        <div class="success-icon">✓</div>
+                        <h2>Thank You!</h2>
+                        <p class="completion-message">Your consent has been successfully recorded. Thank you for participating in the DELIGHT study.</p>
+                        
+                        <div class="consent-summary">
+                            <h3>Summary of Your Choices</h3>
+                            <div class="summary-grid">
+                                <div class="summary-item">
+                                    <strong>Main Consent:</strong> <span id="summaryMainConsent"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Blood Sample:</strong> <span id="summaryBloodSample"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Brain Oxygen Sensor:</strong> <span id="summaryBrainOxygen"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <strong>Data Sharing:</strong> <span id="summaryDataSharing"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="completion-actions">
+                            <button class="btn btn--primary" id="downloadPdfBtn">Download PDF Copy</button>
+                            <button class="btn btn--secondary" id="newConsentBtn">Start New Consent</button>
+                        </div>
+
+                        <div class="contact-info">
+                            <h4>Questions?</h4>
+                            <p>Contact the DELIGHT Study Team:</p>
+                            <p><strong>Phone:</strong> 1800-DELIGHT</p>
+                            <p><strong>Email:</strong> delight@research.edu.au</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
